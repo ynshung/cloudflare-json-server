@@ -25,10 +25,12 @@ export async function onRequestGet({ request }) {
 
         const hideData = searchParams.getAll("hide");
         if (hideData) {
-            hideData.forEach(e => delete data[e]);
-            if (Array.isArray(data)) {
-                for (let i=0; i<data.length; i++) delete data[i][e];
-            }
+            hideData.forEach(hidden => {
+                delete data[hidden];
+                if (Array.isArray(data)) {
+                    for (let i=0; i<data.length; i++) delete data[i][hidden];
+                }
+            });
         }
 
         if (!data || data === {} || data === [])
