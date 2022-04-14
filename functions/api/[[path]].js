@@ -10,14 +10,14 @@ export async function onRequestGet({ request }) {
         var data = await resp.json();
 
         paths.forEach(e => {
-            if (Object.keys(object).includes(e)) data = data[e];
+            if (Object.keys(data).includes(e)) data = data[e];
             else return new Response("Not found", { status: 404 });
         });
 
         // Query parameters
         for (const [key, value] of searchParams) {
             if (key === "hide") continue;
-            data = data.filter(e => e[key] === value);
+            data = data.filter(e => e[key].toString() === value);
         }
 
         const hideData = searchParams.getAll("hide");
