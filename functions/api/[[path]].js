@@ -17,7 +17,7 @@ export async function onRequestGet({ request }) {
         // Query parameters
         for (const [key, value] of searchParams) {
             if (key === "hide") continue;
-            data = data.filter(e => e[key].toString() === value);
+            data = data.filter(e => e[key] === value);
         }
 
         const hideData = searchParams.getAll("hide");
