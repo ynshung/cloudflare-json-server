@@ -1,13 +1,15 @@
+import data from "../db.json";
+
 export async function onRequestGet({ request }) {
     const { pathname, searchParams } = new URL(request.url);
-
+    
     // Split by / and remove first empty element
     var paths = pathname.split('/').slice(1);
 
-    const json_url = "/db.json";
+    // const json_url = "/db.json";
 
-    var resp = await fetch(json_url);
-    var data = await resp.json();
+    // var resp = await fetch(json_url);
+    // var data = await resp.json();
 
     paths.forEach(e => data = data[e]);
 
