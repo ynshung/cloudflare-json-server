@@ -1,3 +1,5 @@
+import db from "../../db.json";
+
 export async function onRequestGet({ request }) {
     try {
         const { pathname, searchParams } = new URL(request.url);
@@ -5,10 +7,11 @@ export async function onRequestGet({ request }) {
         // Split by / and remove first empty element
         var paths = pathname.split('/').slice(1);
 
-        const json_url = "/db.json";
+        // const json_url = "/db.json";
+        // var resp = await fetch(json_url);
+        // var data = await resp.json();
 
-        var resp = await fetch(json_url);
-        var data = await resp.json();
+        var data = db;
 
         paths.forEach(e => data = data[e]);
 
