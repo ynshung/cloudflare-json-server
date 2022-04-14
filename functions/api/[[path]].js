@@ -5,6 +5,9 @@ export async function onRequestGet({ request }) {
         // Split by / and remove first empty element
         var paths = pathname.split('/').slice(2);
 
+        // Check for accessing root path
+        if (paths.length === 0) return new Response("Not allowed", {status: 403});
+
         const DOMAIN = "https://cloudflare-json-server.pages.dev";
         var resp = await fetch(DOMAIN + "/db.json");
         var data = await resp.json();
