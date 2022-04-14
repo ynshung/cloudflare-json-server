@@ -21,11 +21,8 @@ You may refer to the documentation of [combine-json](https://www.npmjs.com/packa
 * Return the first object of cars: [/api/cars/0](https://cloudflare-json-server.pages.dev/api/cars/0)
 * Return city object with its key: [/api/city/KL](https://cloudflare-json-server.pages.dev/api/city/KL)
 * Use `query` to return an array of object/s with specific data: [/api/cars?name=Tesla](https://cloudflare-json-server.pages.dev/api/cars?name=Tesla)
-* Use `hide` to hide unnecessary data from showing: [/api/cars/0?hide=image](https://cloudflare-json-server.pages.dev/api/cars/0?hide=image)
+* Use `hide` to hide unnecessary data from showing: [/api/cars?hide=image](https://cloudflare-json-server.pages.dev/api/cars?hide=image)
+* Combining querying and hiding: [/api/cars?color=orange&hide=image](https://cloudflare-json-server.pages.dev/api/cars?color=orange&hide=image)
 
 ## Known Issues
-
-Highly appreciated if you are able to fix these problem!
-
 * Does not work as well for keyed object (city), querying and hiding may be broken.
-* Hiding and querying at the same time only show query results.
