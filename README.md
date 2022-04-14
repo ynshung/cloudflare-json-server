@@ -7,10 +7,24 @@ Note: REST functionality is not fully implemented and may be buggy. Intended for
 ## Usage
 
 Clone or fork this repository, then edit the following file for your usage:
-* `index.js`: `FOLDER_NAME` - Your intended JSON folder
+* `index.js`: `FOLDER_NAME` - folder containing your JSON, you may also delete the existing files in the `json` folder
 * `functions/api/[[path.js]]`: Point the `DOMAIN` to the subdomain used such as `https://REPOSITORY_NAME.pages.dev` or custom domain used
 
 Go to Cloudflare Pages and create a new project. Set the build command to `npm run gen` and leave everything blank. (Recommened to set `NODE_VERSION` to higher version such as `16.13.2`)
+
+You may also combine with your existing frontend project as well.
+
+### Cloudflare Workers
+
+You can host the backend code separately by changing the api code from `export async function onRequestGet({ request })` to:
+
+```js
+addEventListener("fetch", event => {
+    event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+```
 
 ### Example
 
@@ -25,4 +39,4 @@ You may refer to the documentation of [combine-json](https://www.npmjs.com/packa
 * Combining querying and hiding: [/api/cars?color=orange&hide=image](https://cloudflare-json-server.pages.dev/api/cars?color=orange&hide=image)
 
 ## Known Issues
-* Does not work as well for keyed object (city), querying and hiding may be broken.
+* Does not work as well for keyed object (such as city folder in example), querying and hiding may be broken.
