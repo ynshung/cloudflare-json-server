@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "gen": "node index.js"
+    "build": "node index.js"
   },
   "author": "",
   "license": "ISC",

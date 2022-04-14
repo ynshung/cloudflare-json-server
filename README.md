@@ -10,9 +10,9 @@ Clone or fork this repository, then edit the following file for your usage:
 * `index.js`: `FOLDER_NAME` - folder containing your JSON, you may also delete the existing files in the `json` folder
 * `functions/api/[[path.js]]`: Point the `DOMAIN` to the subdomain used such as `https://REPOSITORY_NAME.pages.dev` or custom domain used
 
-Go to Cloudflare Pages and create a new project. Set the build command to `npm run gen` and leave everything blank. (Recommened to set `NODE_VERSION` to higher version such as `16.13.2`)
+Go to Cloudflare Pages and create a new project. Choose your repository and use "Create React App" as the framework preset. (Recommened to set `NODE_VERSION` to higher version such as `16.13.2`)
 
-You may also combine with your existing frontend project as well.
+`npm run build` will create the JSON file at `build/db.json`. You can also combine with your existing frontend project.
 
 ### Cloudflare Workers
 
