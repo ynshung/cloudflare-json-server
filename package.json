@@ -1,0 +1,15 @@
+{
+  "name": "cloudflare-json-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gen": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^8.0.1",
+    "lodash.set": "^4.3.2"
+  }
+}
