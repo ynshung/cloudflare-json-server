@@ -5,15 +5,19 @@ export async function onRequestGet({ request }) {
         // Split by / and remove first empty element
         var paths = pathname.split('/').slice(2);
 
-        const json_url = "https://cloudflare-json-server.pages.dev/db.json";
-        var resp = await fetch(json_url);
+        const DOMAIN = "https://cloudflare-json-server.pages.dev";
+        var resp = await fetch(DOMAIN + "/db.json");
         var data = await resp.json();
 
-        paths.forEach(e => data = data[e]);
+        paths.forEach(e => {
+            if (Object.keys(object).includes(e)) data = data[e];
+            else return new Response("Not found", { status: 404 });
+        });
 
+        // Query parameters
         for (const [key, value] of searchParams) {
             if (key === "hide") continue;
-            data = data.filter(e => e[key] === value)[0];
+            data = data.filter(e => e[key].toString() === value);
         }
 
         const hideData = searchParams.getAll("hide");
@@ -25,6 +29,6 @@ export async function onRequestGet({ request }) {
             status: 200
         });
     } catch (err) {
-        return new Response(err, {status: 500})
+        return new Response(err, { status: 500 })
     }
 }

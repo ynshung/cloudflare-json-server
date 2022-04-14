@@ -2,7 +2,7 @@
     "id": 3,
     "name": "Sungai Petani",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Jam_besar_1990.jpg/640px-Jam_besar_1990.jpg",
-    "coordinatees": [
+    "coordinates": [
         "5.6500",
         "100.4800"
     ],
