@@ -22,8 +22,7 @@ export async function onRequestGet({ request }) {
         if (!data) return new Response("Not found", { status: 404 });
 
         return new Response(JSON.stringify(data), {
-            status: 200,
-            headers: headers
+            status: 200
         });
     } catch (err) {
         return new Response(err, {status: 500})
