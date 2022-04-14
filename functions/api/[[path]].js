@@ -3,7 +3,7 @@ export async function onRequestGet({ request }) {
         const { pathname, searchParams } = new URL(request.url);
 
         // Split by / and remove first empty element
-        var paths = pathname.split('/').slice(1);
+        var paths = pathname.split('/').slice(2);
 
         const json_url = "https://cloudflare-json-server.pages.dev/db.json";
         var resp = await fetch(json_url);
