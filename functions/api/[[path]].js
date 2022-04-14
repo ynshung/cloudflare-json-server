@@ -33,8 +33,7 @@ export async function onRequestGet({ request }) {
             });
         }
 
-        if (!data || data === {} || data === [])
-            return new Response("Not found", { status: 404 });
+        if (!data) return new Response("Not found", { status: 404 });
 
         return new Response(JSON.stringify(data), {
             status: 200
