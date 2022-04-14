@@ -5,7 +5,7 @@ export async function onRequestGet({ request }) {
         // Split by / and remove first empty element
         var paths = pathname.split('/').slice(1);
 
-        const json_url = "/db.json";
+        const json_url = "https://cloudflare-json-server.pages.dev/db.json";
         var resp = await fetch(json_url);
         var data = await resp.json();
 
