@@ -1,4 +1,4 @@
-import data from "../db.json";
+import db from "../db.json";
 
 export async function onRequestGet({ request }) {
     const { pathname, searchParams } = new URL(request.url);
@@ -10,6 +10,8 @@ export async function onRequestGet({ request }) {
 
     // var resp = await fetch(json_url);
     // var data = await resp.json();
+
+    var data = db;
 
     paths.forEach(e => data = data[e]);
 
