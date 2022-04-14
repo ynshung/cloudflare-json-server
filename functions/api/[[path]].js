@@ -1,28 +1,32 @@
 export async function onRequestGet({ request }) {
-    const { pathname, searchParams } = new URL(request.url);
-    
-    // Split by / and remove first empty element
-    var paths = pathname.split('/').slice(1);
+    try {
+        const { pathname, searchParams } = new URL(request.url);
 
-    const json_url = "/db.json";
+        // Split by / and remove first empty element
+        var paths = pathname.split('/').slice(1);
 
-    var resp = await fetch(json_url);
-    var data = await resp.json();
+        const json_url = "/db.json";
 
-    paths.forEach(e => data = data[e]);
+        var resp = await fetch(json_url);
+        var data = await resp.json();
 
-    for (const [key, value] of searchParams) {
-        if (key === "hide") continue;
-        data = data.filter(e => e[key] === value)[0];
+        paths.forEach(e => data = data[e]);
+
+        for (const [key, value] of searchParams) {
+            if (key === "hide") continue;
+            data = data.filter(e => e[key] === value)[0];
+        }
+
+        const hideData = searchParams.getAll("hide");
+        if (hideData) hideData.forEach(e => delete data[e]);
+
+        if (!data) return new Response("Not found", { status: 404 });
+
+        return new Response(JSON.stringify(data), {
+            status: 200,
+            headers: headers
+        });
+    } catch (err) {
+        return new Response(err, {status: 500})
     }
-
-    const hideData = searchParams.getAll("hide");
-    if (hideData) hideData.forEach(e => delete data[e]);
-
-    if (!data) return new Response("Not found", { status: 404 });
-
-    return new Response(JSON.stringify(data), {
-        status: 200,
-        headers: headers
-    });
 }
