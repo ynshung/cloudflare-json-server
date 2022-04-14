@@ -7,7 +7,7 @@ combine(FOLDER_NAME).then(json => {
     writeFile("build/db.json", JSON.stringify(json, null, 4), function (err) {
         if (err) {
             console.log(err);
-            return e;
+            return err;
         }
         console.log("json folder outputted to db.json")
     });
