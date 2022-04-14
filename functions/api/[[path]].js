@@ -17,13 +17,22 @@ export async function onRequestGet({ request }) {
         // Query parameters
         for (const [key, value] of searchParams) {
             if (key === "hide") continue;
-            data = data.filter(e => e[key].toString() === value);
+            data = data.filter(e => {
+                if (e[key]) return e[key].toString() === value;
+                else return false;
+            });
         }
 
         const hideData = searchParams.getAll("hide");
-        if (hideData) hideData.forEach(e => delete data[e]);
+        if (hideData) {
+            hideData.forEach(e => delete data[e]);
+            if (Array.isArray(data)) {
+                data = data.map(() => hideData.forEach(e => delete data[index][e]));
+            }
+        }
 
-        if (!data) return new Response("Not found", { status: 404 });
+        if (!data || data === {} || data === [])
+            return new Response("Not found", { status: 404 });
 
         return new Response(JSON.stringify(data), {
             status: 200
