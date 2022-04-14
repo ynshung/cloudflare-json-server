@@ -28,5 +28,4 @@ You may refer to the documentation of [combine-json](https://www.npmjs.com/packa
 Highly appreciated if you are able to fix these problem!
 
 * Does not work as well for keyed object (city), querying and hiding may be broken.
-* Hiding only works on single object.
-* Hiding and querying at the same time, only shown query results.
+* Hiding and querying at the same time only show query results.

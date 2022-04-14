@@ -27,7 +27,7 @@ export async function onRequestGet({ request }) {
         if (hideData) {
             hideData.forEach(e => delete data[e]);
             if (Array.isArray(data)) {
-                data = data.map(() => hideData.forEach(e => delete data[index][e]));
+                for (let i=0; i<data.length; i++) delete data[i][e];
             }
         }
 
