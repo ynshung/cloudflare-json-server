@@ -10,11 +10,14 @@ export async function onRequestGet({ request }) {
 
         var resp = await fetch(origin + "/db.json");
         var data = await resp.json();
+        var notFound = false;
 
         paths.forEach(e => {
             if (Object.keys(data).includes(e)) data = data[e];
-            else return new Response("Not found", { status: 404 });
+            else notFound = true;
         });
+
+        if (notFound) return new Response("Not found", { status: 404 });
 
         // Query parameters
         for (const [key, value] of searchParams) {
