@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node index.js",
-    "dev": "wrangler pages dev ./build"
+    "dev": "wrangler pages dev build"
   },
   "author": "",
   "license": "ISC",
