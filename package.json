@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build": "node index.js",
+    "dev": "wrangler pages dev ./build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "glob": "^8.0.1",
-    "lodash.set": "^4.3.2"
+    "lodash.set": "^4.3.2",
+    "wrangler": "^0.0.26"
   }
 }
